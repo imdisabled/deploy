@@ -1,12 +1,29 @@
 * {
     box-sizing: border-box;
 }
-
+@font-face {
+    font-family: vc;
+    src: url('Wild\ Bouncy.otf');
+}
 body {
-    background-color: #C5D5EA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /* background-color: #C5D5EA; */
+    font-size: 3rem;
+    background-image: url('ww.jpg');
+    background-size: cover;
 }
 h1 {
     text-align: center;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #372554;
+    font-family: vc;
+    color: white;
+    transition-property: color, transform, text-shadow;
+    transition: 1s ease-in-out;
+}
+h1:hover {
+    color: #00F7FF;
+    text-shadow: 0 0 10px white;
+    transform: scale(1.5);
 }
