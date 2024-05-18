@@ -2,8 +2,8 @@
     box-sizing: border-box;
 }
 @font-face {
-    font-family: vc;
-    src: url("fonts/Wild\ Bouncy.otf");
+    font-family: gggg;
+    src: url("../fonts/DangerNightPersonalUse-owdl4.otf");
 }
 body {
     display: flex;
@@ -17,10 +17,11 @@ body {
 }
 h1 {
     text-align: center;
-    font-family: vc;
+    font-family: gggg;
     color: white;
     transition-property: color, transform, text-shadow;
     transition: 1s ease-in-out;
+    text-shadow: 0 0 20px #2EC4B6;
 }
 h1:hover {
     color: #00F7FF;
