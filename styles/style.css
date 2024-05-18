@@ -29,7 +29,7 @@ h1:hover {
 }
 @media only screen and (max-width: 755px) {
     body {
-        background-image: url("../images/phone.jpg");
+        background-image: url("../images/g.jpg");
     }
     h1 {
         font-size: 1.3rem;
