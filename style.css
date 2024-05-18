@@ -3,7 +3,7 @@
 }
 @font-face {
     font-family: vc;
-    src: url("fonts/Wild\ Bouncy.otf");
+    src: url("./fonts/Wild\ Bouncy.otf");
 }
 body {
     display: flex;
@@ -12,7 +12,7 @@ body {
     min-height: 80vh;
     /* background-color: #C5D5EA; */
     font-size: 3rem;
-    background-image: url("images/ww.jpg");
+    background-image: url("./images/ww.jpg");
     background-size: cover;
 }
 h1 {
