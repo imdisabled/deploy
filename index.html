@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Offers</title>
     <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -15,6 +22,7 @@
             overflow-x: hidden;
         }
 
+        /* Snowflake animation */
         .snowflake {
             position: fixed;
             width: 10px;
@@ -26,12 +34,8 @@
         }
 
         @keyframes snowfall {
-            0% {
-                transform: translateY(-100vh) translateX(0);
-            }
-            100% {
-                transform: translateY(100vh) translateX(20px);
-            }
+            0% { transform: translateY(-100vh) translateX(0); }
+            100% { transform: translateY(100vh) translateX(20px); }
         }
 
         .container {
@@ -52,10 +56,8 @@
         }
 
         @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-            }
-            to {
+            from { text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
+            to { 
                 text-shadow: 0 0 20px rgba(255, 0, 0, 0.8),
                              0 0 30px rgba(255, 0, 0, 0.6);
             }
@@ -108,22 +110,26 @@
             color: #2c3e50;
             margin-bottom: 15px;
             font-size: 1.8em;
+            text-align: center;
         }
 
         .offer p {
             color: #34495e;
             line-height: 1.6;
             margin: 10px 0;
+            text-align: center;
         }
 
         .offer a {
-            display: inline-block;
+            display: block;
             padding: 12px 25px;
             background: linear-gradient(145deg, #2ecc71, #27ae60);
             color: white;
             text-decoration: none;
             border-radius: 25px;
-            margin-top: 15px;
+            margin: 15px auto 0;
+            max-width: 250px;
+            text-align: center;
             transition: all 0.3s ease;
         }
 
@@ -145,6 +151,137 @@
             font-size: 2em;
             animation: float 6s ease-in-out infinite;
         }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Mobile-specific styles */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+                padding: 0 15px;
+                margin: 20px 0;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .button {
+                padding: 15px 30px;
+                font-size: 1em;
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .offer {
+                padding: 20px;
+                margin: 20px auto;
+                width: 90%;
+            }
+
+            .offer h2 {
+                font-size: 1.4em;
+            }
+
+            .offer img {
+                max-width: 80px;
+            }
+
+            .offer p {
+                font-size: 0.9em;
+            }
+
+            .offer a {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                width: 100%;
+            }
+
+            .decoration {
+                font-size: 1.5em;
+            }
+
+            /* Adjust decoration positions for mobile */
+            .decoration:nth-child(1) { top: 5%; left: 5%; }
+            .decoration:nth-child(2) { top: 15%; right: 5%; }
+            .decoration:nth-child(3) { bottom: 10%; left: 5%; }
+            .decoration:nth-child(4) { bottom: 20%; right: 5%; }
+            .decoration:nth-child(5) { top: 30%; left: 10%; }
+
+            /* Reduce number of snowflakes on mobile */
+            .snowflake:nth-child(n+26) {
+                display: none;
+            }
+        }
+
+        /* Small phone styles */
+        @media screen and (max-width: 375px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .button {
+                padding: 12px 24px;
+                font-size: 0.9em;
+            }
+
+            .offer {
+                padding: 15px;
+            }
+
+            .offer h2 {
+                font-size: 1.2em;
+            }
+
+            .offer img {
+                max-width: 60px;
+            }
+
+            .offer p {
+                font-size: 0.85em;
+            }
+
+            .decoration {
+                font-size: 1.2em;
+            }
+        }
+
+        /* Handle landscape orientation */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .container {
+                padding-top: 10px;
+            }
+
+            h1 {
+                margin: 10px 0;
+            }
+
+            .button {
+                margin: 15px auto;
+            }
+
+            .offer {
+                margin: 15px auto;
+            }
+
+            .decorations {
+                display: none;
+            }
+        }
+
+        /* Hide tap highlight on mobile */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Improve touch targets */
+        .button, .offer a {
+            min-height: 44px;
+        }
     </style>
 </head>
 <body>
@@ -164,8 +301,11 @@
     </div>
 
     <script>
-        // Create snowflakes
-        for (let i = 0; i < 50; i++) {
+        // Create snowflakes (reduced number for mobile)
+        const isMobile = window.innerWidth <= 768;
+        const snowflakeCount = isMobile ? 25 : 50;
+        
+        for (let i = 0; i < snowflakeCount; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             snowflake.style.left = `${Math.random() * 100}vw`;
